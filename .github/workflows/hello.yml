@@ -1,0 +1,33 @@
+name: Hello Learning Git!
+
+# Run this workflow when you push to main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Check out your code
+      uses: actions/checkout@v4
+  
+    - name: Say hello
+      run: |
+        echo "🎉 Hello from GitHub Actions!"
+        echo "🚀 Your automation is working!"
+        echo "📚 You're learning Git like a champion!"
+  
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+  
+    - name: Test your Python files
+      run: |
+        echo "Testing your Python projects..."
+        find exercises/ -name "*.py" -exec python -m py_compile {} \;
+        echo "✅ All Python files are valid!"
